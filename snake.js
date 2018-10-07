@@ -10,8 +10,8 @@ const ctx = canvas.getContext("2d");
 const kare = 32;
 
 
-const foodImg = new Image();
-foodImg.src = "img/food.png";
+const elmaImg = new Image();
+elmaImg.src = "img/elma.png";
 
 // ses dosyaları
 
@@ -97,7 +97,7 @@ function draw(){
         ctx.strokeRect(snake[i].x,snake[i].y,kare,kare);
     }
     
-    ctx.drawImage(foodImg, food.x, food.y, 30, 30);
+    ctx.drawImage(elmaImg, food.x, food.y, 30, 30);
     
     // kafa pozisyonu
     let snakeX = snake[0].x;
