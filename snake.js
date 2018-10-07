@@ -40,7 +40,7 @@ snake[0] = {
 
 // elma oluştur
 
-let food = {
+let elma = {
     x : Math.floor(Math.random()*19) * kare,
     y : Math.floor(Math.random()*19) * kare
 }
@@ -97,7 +97,7 @@ function draw(){
         ctx.strokeRect(snake[i].x,snake[i].y,kare,kare);
     }
     
-    ctx.drawImage(elmaImg, food.x, food.y, 30, 30);
+    ctx.drawImage(elmaImg, elma.x, elma.y, 30, 30);
     
     // kafa pozisyonu
     let snakeX = snake[0].x;
@@ -110,10 +110,10 @@ function draw(){
     if( tus == "DOWN") snakeY += kare;
     
     // yılan elmayı yerse
-    if(snakeX == food.x && snakeY == food.y){
+    if(snakeX == elma.x && snakeY == elma.y){
         skor++;
         eat.play();
-        food = {
+        elma = {
             x : Math.floor(Math.random()*19) * kare,
             y : Math.floor(Math.random()*19) * kare
         }
