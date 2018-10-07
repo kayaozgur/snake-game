@@ -4,7 +4,7 @@ const canvas = document.getElementById("canvas");
 canvas.style.backgroundColor = 'blue';
 canvas.width = canvas.height = 608;
 
-const ctx = canvas.getContext("2d");
+const context = canvas.getContext("2d");
 
 
 const kare = 32;
@@ -87,17 +87,17 @@ function carptimi(head,array){
 function draw(){
     
    
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     for( let i = 0; i < snake.length ; i++){
-        ctx.fillStyle = "white";
-        ctx.fillRect(snake[i].x,snake[i].y,kare,kare);
+        context.fillStyle = "white";
+        context.fillRect(snake[i].x,snake[i].y,kare,kare);
         
-        ctx.strokeStyle = "red";
-        ctx.strokeRect(snake[i].x,snake[i].y,kare,kare);
+        context.strokeStyle = "red";
+        context.strokeRect(snake[i].x,snake[i].y,kare,kare);
     }
     
-    ctx.drawImage(elmaImg, elma.x, elma.y, 30, 30);
+    context.drawImage(elmaImg, elma.x, elma.y, 30, 30);
     
     // kafa pozisyonu
     let snakeX = snake[0].x;
@@ -136,16 +136,16 @@ function draw(){
         clearInterval(oyun);
         dead.play();
 
-    ctx.fillStyle = "white";
-    ctx.font = "90px arial";
-    ctx.fillText('OYUN BİTTİ',50,300);
+    context.fillStyle = "white";
+    context.font = "90px arial";
+    context.fillText('OYUN BİTTİ',50,300);
     }
     
     snake.unshift(newHead);
     
-    ctx.fillStyle = "white";
-    ctx.font = "30px arial";
-    ctx.fillText(skor,2,29);
+    context.fillStyle = "white";
+    context.font = "30px arial";
+    context.fillText(skor,2,29);
 }
 
 // 
