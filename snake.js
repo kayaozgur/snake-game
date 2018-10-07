@@ -34,15 +34,15 @@ down.src = "audio/down.mp3";
 let snake = [];
 
 snake[0] = {
-    x : 9 * kare,
-    y : 10 * kare
+    x: 9 * kare,
+    y: 10 * kare
 };
 
 // elma oluştur
 
 let elma = {
-    x : Math.floor(Math.random()*19) * kare,
-    y : Math.floor(Math.random()*19) * kare
+    x: Math.floor(Math.random() * 19) * kare,
+    y: Math.floor(Math.random() * 19) * kare
 }
 
 // skor
@@ -53,29 +53,29 @@ let skor = 0;
 
 let tus;
 
-document.addEventListener("keydown",hareketYonu);
+document.addEventListener("keydown", hareketYonu);
 
-function hareketYonu(e){
+function hareketYonu(e) {
     let key = e.keyCode;
-    if( key == 37 && tus != "SAG"){
+    if (key == 37 && tus != "SAG") {
         left.play();
         tus = "LEFT";
-    }else if(key == 38 && tus != "ASAGI"){
+    } else if (key == 38 && tus != "ASAGI") {
         tus = "UP";
         up.play();
-    }else if(key == 39 && tus != "SOL"){
+    } else if (key == 39 && tus != "SOL") {
         tus = "RIGHT";
         right.play();
-    }else if(key == 40 && tus != "YUKARI"){
+    } else if (key == 40 && tus != "YUKARI") {
         tus = "DOWN";
         down.play();
     }
 }
 
 // çarpma kontrol
-function carptimi(head,array){
-    for(let i = 0; i < array.length; i++){
-        if(head.x == array[i].x && head.y == array[i].y){
+function carptimi(head, array) {
+    for (let i = 0; i < array.length; i++) {
+        if (head.x == array[i].x && head.y == array[i].y) {
             return true;
         }
     }
@@ -84,73 +84,71 @@ function carptimi(head,array){
 
 // cizim fonksiyonu
 
-function draw(){
-    
-   
+function draw() {
+
+
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    for( let i = 0; i < snake.length ; i++){
+    for (let i = 0; i < snake.length; i++) {
         context.fillStyle = "white";
-        context.fillRect(snake[i].x,snake[i].y,kare,kare);
-        
+        context.fillRect(snake[i].x, snake[i].y, kare, kare);
+
         context.strokeStyle = "red";
-        context.strokeRect(snake[i].x,snake[i].y,kare,kare);
+        context.strokeRect(snake[i].x, snake[i].y, kare, kare);
     }
-    
+
     context.drawImage(elmaImg, elma.x, elma.y, 30, 30);
-    
+
     // kafa pozisyonu
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
-    
+
     // hangi yön
-    if( tus == "LEFT") snakeX -= kare;
-    if( tus == "UP") snakeY -= kare;
-    if( tus == "RIGHT") snakeX += kare;
-    if( tus == "DOWN") snakeY += kare;
-    
+    if (tus == "LEFT") snakeX -= kare;
+    if (tus == "UP") snakeY -= kare;
+    if (tus == "RIGHT") snakeX += kare;
+    if (tus == "DOWN") snakeY += kare;
+
     // yılan elmayı yerse
-    if(snakeX == elma.x && snakeY == elma.y){
+    if (snakeX == elma.x && snakeY == elma.y) {
         skor++;
         eat.play();
         elma = {
-            x : Math.floor(Math.random()*19) * kare,
-            y : Math.floor(Math.random()*19) * kare
+            x: Math.floor(Math.random() * 19) * kare,
+            y: Math.floor(Math.random() * 19) * kare
         }
-       
-    }else{
+
+    } else {
         // kuyruğu sil
         snake.pop();
     }
-    
+
     // yeni kafa
-    
+
     let newHead = {
-        x : snakeX,
-        y : snakeY
+        x: snakeX,
+        y: snakeY
     }
-    
+
     // oyun bitti
-    
-    if(snakeX < 0 || snakeX > canvas.width - kare || snakeY < 0 || snakeY > canvas.height - kare || carptimi(newHead,snake)){
+
+    if (snakeX < 0 || snakeX > canvas.width - kare || snakeY < 0 || snakeY > canvas.height - kare || carptimi(newHead, snake)) {
         clearInterval(oyun);
         dead.play();
 
-    context.fillStyle = "white";
-    context.font = "90px arial";
-    context.fillText('OYUN BİTTİ',50,300);
+        context.fillStyle = "white";
+        context.font = "90px arial";
+        context.fillText('OYUN BİTTİ', 50, 300);
     }
-    
+
     snake.unshift(newHead);
-    
+
     context.fillStyle = "white";
     context.font = "30px arial";
-    context.fillText(skor,2,29);
+    context.fillText(skor, 2, 29);
 }
-
-// 
-
-let oyun = setInterval(draw,150);
+ 
+let oyun = setInterval(draw, 150);
 
 
 
