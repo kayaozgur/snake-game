@@ -87,7 +87,7 @@ function carptimi(head,array){
 function draw(){
     
    
-    ctx.clearRect(0, 0, 608, 608);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for( let i = 0; i < snake.length ; i++){
         ctx.fillStyle = "white";
