@@ -1,8 +1,25 @@
 <html>
     <head>
         <title>Yılan Oyunu</title>
+        <style>
+            #start-btn {
+                position: absolute;
+                border-radius: 10px;
+                font-size: 20px;
+                color: white;
+                background-color: green;
+                top: 350px;
+                left: 240px;
+                width: 150px;
+                height: 40px;
+            }
+        </style>
        
     </head>
-    <canvas id="canvas"></canvas>
-    <script src="snake.js"></script>
-</html>
+    <body onload="start()">
+        
+        <canvas id="canvas"></canvas>
+        <button id="start-btn" onclick= 'start()'>Yeniden başla</button>
+        <script src="snake.js"></script>
+    </body>
+        </html>

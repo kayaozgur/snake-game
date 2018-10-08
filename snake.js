@@ -1,8 +1,12 @@
+function start () {
+
 
 
 const canvas = document.getElementById("canvas");
 canvas.style.backgroundColor = 'blue';
 canvas.width = canvas.height = 608;
+
+const startBtn = document.getElementById('start-btn');
 
 const context = canvas.getContext("2d");
 
@@ -86,6 +90,7 @@ function carptimi(head, array) {
 
 function draw() {
 
+    startBtn.style.display = 'none';
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -139,6 +144,8 @@ function draw() {
         context.fillStyle = "white";
         context.font = "90px arial";
         context.fillText('OYUN BİTTİ', 50, 300);
+    
+        startBtn.style.display = 'initial';
     }
 
     snake.unshift(newHead);
@@ -147,11 +154,15 @@ function draw() {
     context.font = "30px arial";
     context.fillText(skor, 2, 29);
 }
+
+function restart () {
+    window.location.reload(false); 
+}
  
 let oyun = setInterval(draw, 150);
 
 
-
+}
 
 
 
